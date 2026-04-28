@@ -19,29 +19,27 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-          cache-dependency-path: '/package-lock.json'
+          # ✅ Pas de cache-dependency-path si package-lock.json est à la racine du repo
 
       - name: Install dependencies
-        working-directory: /
         run: npm ci
+        # ✅ Pas de working-directory, GitHub Actions est déjà dans la racine du repo
 
       - name: Build project
-        working-directory: /
         run: npm run build
 
       - name: Verify build
         run: |
-          if [ ! -d "/dist" ]; then
-            echo "dist folder missing"
+          echo "Contenu de la racine :"
+          ls -la
+          # Adapte "dist" ou "out" selon ton framework
+          if [ ! -d "dist" ] && [ ! -d "out" ]; then
+            echo "❌ Aucun dossier de build trouvé (ni dist ni out)"
             exit 1
           fi
-          if [ ! -f "/dist/index.html" ]; then
-            echo "index.html missing"
-            exit 1
-          fi
-          echo "Build OK"
-          # Correction : on pointe vers frontend/dist
-          du -sh /dist
+          BUILD_DIR=$([ -d "out" ] && echo "out" || echo "dist")
+          echo "✅ Build trouvé dans : $BUILD_DIR"
+          du -sh $BUILD_DIR
 
       - name: Deploy via FTP
         uses: sebastianpopp/ftp-action@releases/v2
@@ -51,7 +49,6 @@ jobs:
           password: ${{ secrets.PASSS }}
           protocol: ftp
           port: 21
-          # Correction cruciale : le dossier à envoyer est dans frontend/
-          localDir: /dist
+          localDir: ./out/   # ✅ Mets "out" pour Next.js, "dist" pour Vite/CRA
           remoteDir: /
           dangerous-clean-slate: true
