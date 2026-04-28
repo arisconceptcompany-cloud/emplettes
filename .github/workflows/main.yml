@@ -49,6 +49,6 @@ jobs:
           password: ${{ secrets.PASSS }}
           protocol: ftp
           port: 21
-          localDir: ./out/   # ✅ Mets "out" pour Next.js, "dist" pour Vite/CRA
+          localDir: ./dist/   # ✅ Mets "out" pour Next.js, "dist" pour Vite/CRA
           remoteDir: /
           dangerous-clean-slate: true
