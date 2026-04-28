@@ -81,13 +81,13 @@ function StockPage() {
     <div>
       <div className="mb-10">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-3xl bg-blue-400 flex items-center justify-center">
             <Crown className="text-white" size={20} />
           </div>
           <div>
-            <h1 className="text-3xl font-bold">
-              <span className="logo-text text-slate-800">Ma </span>
-              <span className="logo-text-emphase">Collection</span>
+            <h1 className="text-3xl font-bold page-logo-title">
+              <span className="text-blue-400">Ma </span>
+              <span className="text-red-600">Collection</span>
             </h1>
             <p className="text-slate-500 text-sm">Gérez votre inventaire avec élégance</p>
           </div>
@@ -97,29 +97,29 @@ function StockPage() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
         <div className="glass-card rounded-2xl p-5">
           <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Articles</p>
-          <p className="text-3xl font-bold text-slate-800">{articles.length}</p>
+          <p className="text-3xl font-bold number-gold">{articles.length}</p>
         </div>
         <div className="glass-card rounded-2xl p-5">
           <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">En stock</p>
-          <p className="text-3xl font-bold text-emerald-600">
+          <p className="text-3xl font-bold number-gold">
             {articles.reduce((acc, a) => acc + a.quantite, 0)}
           </p>
         </div>
         <div className="glass-card rounded-2xl p-5">
           <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Valeur totale</p>
-          <p className="text-2xl font-bold gold-gradient">
+          <p className="text-2xl font-bold number-gold">
             {totalValue.toLocaleString()} Ar
           </p>
         </div>
         <div className="glass-card rounded-2xl p-5">
           <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Alertes</p>
-          <p className="text-3xl font-bold text-red-500">{alertes.length}</p>
+          <p className="text-3xl font-bold number-gold">{alertes.length}</p>
         </div>
       </div>
 
       <div className="glass-card rounded-2xl p-4 mb-8 search-layer">
         <div ref={searchRef} className="relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-amber-500/60" size={22} />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-600/60" size={22} />
           <input
             type="text"
             placeholder="Rechercher un article par référence ou nom..."
@@ -138,7 +138,7 @@ function StockPage() {
                       onClick={() => handleSelectSuggestion(article)}
                       className="w-full px-4 py-3 text-left hover:bg-slate-50 transition-colors"
                     >
-                      <p className="text-xs font-mono text-amber-600">{article.id}</p>
+                      <p className="text-xs font-mono text-blue-700">{article.id}</p>
                       <p className="text-sm font-semibold text-slate-800 truncate">{article.titre}</p>
                     </button>
                   </li>
@@ -152,7 +152,7 @@ function StockPage() {
       {displayedArticles.length === 0 ? (
         <div className="glass-card rounded-2xl p-16 text-center">
           <div className="w-24 h-24 rounded-full bg-gradient-to-br from-slate-100 to-slate-50 mx-auto mb-6 flex items-center justify-center floating">
-            <Package className="text-amber-500/50" size={48} />
+            <Package className="text-blue-600/50" size={48} />
           </div>
           <h3 className="text-2xl font-bold text-slate-800 mb-3">
             {searchTerm ? 'Aucun résultat trouvé' : 'Votre collection est vide'}
@@ -174,7 +174,7 @@ function StockPage() {
         <>
           <div className="flex items-center justify-between mb-6">
             <p className="text-slate-500">
-              <span className="text-slate-800 font-semibold">{displayedArticles.length}</span> article(s) trouvé(s)
+              <span className="number-gold font-semibold">{displayedArticles.length}</span> article(s) trouvé(s)
             </p>
             {searchTerm && (
               <button
@@ -184,7 +184,7 @@ function StockPage() {
                   setSearchParams({});
                   setShowSuggestions(false);
                 }}
-                className="text-amber-600 hover:text-amber-700 text-sm"
+                className="text-blue-700 hover:text-red-700 text-sm"
               >
                 Effacer la recherche
               </button>

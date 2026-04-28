@@ -12,13 +12,13 @@ function AlertesPage() {
     <div>
       <div className="mb-10">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-400 to-orange-500 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-3xl bg-blue-400 flex items-center justify-center">
             <AlertTriangle className="text-white" size={20} />
           </div>
           <div>
-            <h1 className="text-3xl font-bold">
-              <span className="logo-text text-slate-800">Alertes de </span>
-              <span className="logo-text-emphase">Stock</span>
+            <h1 className="text-3xl font-bold page-logo-title">
+              <span className="text-blue-400">Alertes de </span>
+              <span className="text-red-600">Stock</span>
             </h1>
             <p className="text-slate-500 text-sm">Surveillez les articles à approvisionner</p>
           </div>
@@ -29,7 +29,7 @@ function AlertesPage() {
         <div className="glass-card rounded-2xl p-5 border border-red-200">
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-2xl bg-red-100 flex items-center justify-center">
-              <span className="text-2xl font-bold text-red-500">{ruptureStock.length}</span>
+              <span className="text-2xl font-bold number-gold">{ruptureStock.length}</span>
             </div>
             <div>
               <p className="text-xs text-slate-500 uppercase tracking-wider">Rupture</p>
@@ -38,22 +38,22 @@ function AlertesPage() {
           </div>
         </div>
         
-        <div className="glass-card rounded-2xl p-5 border border-orange-200">
+        <div className="glass-card rounded-2xl p-5 border border-red-200">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-orange-100 flex items-center justify-center">
-              <span className="text-2xl font-bold text-orange-500">{stockFaible.length}</span>
+            <div className="w-14 h-14 rounded-2xl bg-red-100 flex items-center justify-center">
+              <span className="text-2xl font-bold number-gold">{stockFaible.length}</span>
             </div>
             <div>
               <p className="text-xs text-slate-500 uppercase tracking-wider">Stock Faible</p>
-              <p className="text-slate-800 font-semibold">{stockFaible.length} article(s)</p>
+              <p className="text-slate-800 font-semibold"><span className="number-gold">{stockFaible.length}</span> article(s)</p>
             </div>
           </div>
         </div>
         
-        <div className="glass-card rounded-2xl p-5 border border-yellow-200">
+        <div className="glass-card rounded-2xl p-5 border border-blue-200">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-yellow-100 flex items-center justify-center">
-              <span className="text-2xl font-bold text-yellow-600">{alertes.length}</span>
+            <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center">
+              <span className="text-2xl font-bold number-gold">{alertes.length}</span>
             </div>
             <div>
               <p className="text-xs text-slate-500 uppercase tracking-wider">Total Alertes</p>
@@ -65,8 +65,8 @@ function AlertesPage() {
 
       {alertes.length === 0 ? (
         <div className="glass-card rounded-2xl p-16 text-center">
-          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-emerald-100 to-emerald-50 mx-auto mb-8 flex items-center justify-center floating">
-            <CheckCircle className="text-emerald-500" size={64} />
+          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-100 to-red-50 mx-auto mb-8 flex items-center justify-center floating">
+            <CheckCircle className="text-blue-600" size={64} />
           </div>
           <h3 className="text-3xl font-bold text-slate-800 mb-4">Tout est en ordre !</h3>
           <p className="text-slate-500 text-lg mb-8 max-w-md mx-auto">
@@ -84,7 +84,7 @@ function AlertesPage() {
           <div className="glass-card rounded-2xl overflow-hidden">
             <div className="p-6 border-b border-slate-200">
               <h2 className="text-xl font-bold text-slate-800">
-                Articles à approvisionner ({alertes.length})
+                Articles à approvisionner (<span className="number-gold">{alertes.length}</span>)
               </h2>
             </div>
             
@@ -103,11 +103,11 @@ function AlertesPage() {
                     
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-1">
-                      <span className="text-xs text-amber-600 font-mono bg-amber-100 px-2 py-0.5 rounded">
+                      <span className="text-xs text-blue-700 font-mono bg-blue-100 px-2 py-0.5 rounded">
                         {article.id}
                       </span>
                       {article.couleur && (
-                        <span className="text-xs bg-purple-100 text-purple-600 px-2 py-0.5 rounded">
+                        <span className="text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded">
                           {article.couleur}
                         </span>
                       )}
@@ -116,16 +116,13 @@ function AlertesPage() {
                     {article.caracteristiques && (
                       <p className="text-sm text-slate-500 mb-1">{article.caracteristiques}</p>
                     )}
-                    <p className="text-2xl font-bold gold-gradient">
+                    <p className="text-2xl font-bold number-gold">
                       {parseFloat(article.prix_vente).toLocaleString()} Ar
                     </p>
                   </div>
 
                   <div className="text-center px-8">
-                    <div className={`text-5xl font-bold mb-2 ${
-                      article.quantite === 0 ? 'text-red-500' :
-                      article.quantite === 1 ? 'text-orange-500' : 'text-yellow-600'
-                    }`}>
+                    <div className="text-5xl font-bold mb-2 number-gold">
                       {article.quantite}
                     </div>
                     <p className="text-xs text-slate-500 uppercase tracking-wider">En stock</p>
@@ -138,7 +135,7 @@ function AlertesPage() {
                       </span>
                     )}
                     {article.quantite === 1 && (
-                      <span className="px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white text-sm font-bold rounded-xl shadow-lg shadow-orange-500/30">
+                      <span className="px-4 py-2 bg-gradient-to-r from-red-600 to-red-500 text-white text-sm font-bold rounded-xl shadow-lg shadow-red-600/30">
                         DERNIER ARTICLE
                       </span>
                     )}
@@ -156,7 +153,7 @@ function AlertesPage() {
 
           <Link
             to="/stock/new"
-            className="block glass-card rounded-2xl p-6 text-center hover:border-amber-300 transition-colors"
+            className="block glass-card rounded-2xl p-6 text-center hover:border-blue-300 transition-colors"
           >
             <div className="flex items-center justify-center gap-3">
               

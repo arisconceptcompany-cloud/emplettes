@@ -137,7 +137,7 @@ function VentePage() {
     const parts = text.split(regex);
     return parts.map((part, i) =>
       regex.test(part)
-        ? <mark key={i} className="bg-amber-200 text-amber-900 rounded px-0.5">{part}</mark>
+        ? <mark key={i} className="bg-blue-200 text-blue-900 rounded px-0.5">{part}</mark>
         : part
     );
   };
@@ -147,13 +147,13 @@ function VentePage() {
       {/* Header */}
       <div className="mb-6 sm:mb-10">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shrink-0">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-3xl bg-blue-400 flex items-center justify-center shrink-0">
             <Receipt className="text-white" size={18} />
           </div>
           <div>
-            <h1 className="text-2xl sm:text-3xl font-bold">
-              <span className="logo-text text-slate-800">Nouvelle </span>
-              <span className="logo-text-emphase">Vente</span>
+            <h1 className="text-2xl sm:text-3xl font-bold page-logo-title">
+              <span className="text-blue-400">Nouvelle </span>
+              <span className="text-red-600">Vente</span>
             </h1>
             <p className="text-slate-500 text-xs sm:text-sm">Enregistrez une transaction avec élégance</p>
           </div>
@@ -162,14 +162,14 @@ function VentePage() {
 
       {/* Success banner */}
       {success && (
-        <div className="glass-card rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8 border border-emerald-200 bg-emerald-50">
+        <div className="glass-card rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8 border border-blue-200 bg-blue-50">
           <div className="flex items-center gap-3 sm:gap-4">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 floating">
-              <Check className="text-emerald-600" size={28} />
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-100 flex items-center justify-center shrink-0 floating">
+              <Check className="text-blue-700" size={28} />
             </div>
             <div>
               <h3 className="text-base sm:text-xl font-bold text-slate-800">Vente enregistrée avec succès !</h3>
-              <p className="text-emerald-600 text-sm">La transaction a été sauvegardée et le stock mis à jour.</p>
+              <p className="text-blue-700 text-sm">La transaction a été sauvegardée et le stock mis à jour.</p>
             </div>
           </div>
         </div>
@@ -181,8 +181,8 @@ function VentePage() {
           {/* Recherche article */}
           <div className="glass-card rounded-2xl p-4 sm:p-6 search-layer">
             <h2 className="text-base sm:text-lg font-semibold text-slate-800 mb-4 sm:mb-6 flex items-center gap-3">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-100 flex items-center justify-center shrink-0">
-                <Package className="text-amber-600" size={18} />
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-100 flex items-center justify-center shrink-0">
+                <Package className="text-blue-400" size={18} />
               </div>
               Recherche d'Article
             </h2>
@@ -226,7 +226,7 @@ function VentePage() {
                           <button
                             type="button"
                             onClick={() => handleSelectSuggestion(article)}
-                            className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-amber-50 transition-colors text-left group"
+                            className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-blue-50 transition-colors text-left group"
                           >
                             <img
                               src={article.photos || article.photo_urlpath || `/images/${article.id}.jpg`}
@@ -236,13 +236,10 @@ function VentePage() {
                             />
                             <div className="flex-1 min-w-0">
                               <div className="flex items-center gap-2">
-                                <span className="text-xs font-mono text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded group-hover:bg-amber-100 transition-colors shrink-0">
+                                <span className="text-xs font-mono text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded group-hover:bg-blue-100 transition-colors shrink-0">
                                   {highlight(article.id, searchRef)}
                                 </span>
-                                <span className={`text-xs font-medium shrink-0 ${
-                                  article.quantite > 2 ? 'text-emerald-600' :
-                                  article.quantite === 0 ? 'text-red-500' : 'text-orange-500'
-                                }`}>
+                                <span className="text-xs font-medium shrink-0 number-gold">
                                   Stock: {article.quantite}
                                 </span>
                               </div>
@@ -256,7 +253,7 @@ function VentePage() {
                               )}
                             </div>
                             <div className="shrink-0 text-right">
-                              <p className="text-sm font-bold text-amber-600">
+                              <p className="text-sm font-bold number-gold">
                                 {parseFloat(article.prix_vente).toLocaleString()} Ar
                               </p>
                             </div>
@@ -270,7 +267,7 @@ function VentePage() {
 
               {/* Article sélectionné */}
               {selectedArticle && (
-                <div className="rounded-xl p-3 sm:p-4 bg-amber-50/80 border border-amber-200">
+                <div className="rounded-xl p-3 sm:p-4 bg-blue-50/80 border border-blue-200">
                   <div className="flex gap-3 sm:gap-4">
                     <img
                       src={selectedArticle.photos || selectedArticle.photo_urlpath || `/images/${selectedArticle.id}.jpg`}
@@ -279,7 +276,7 @@ function VentePage() {
                       onError={(e) => e.target.src = 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200'}
                     />
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs text-amber-600 font-mono">{selectedArticle.id}</p>
+                      <p className="text-xs text-blue-700 font-mono">{selectedArticle.id}</p>
                       <h3 className="font-bold text-sm sm:text-base text-slate-800 mb-1 truncate">{selectedArticle.titre}</h3>
                       {selectedArticle.caracteristiques && (
                         <p className="text-xs text-slate-500 mb-1 truncate">{selectedArticle.caracteristiques}</p>
@@ -287,13 +284,10 @@ function VentePage() {
                       {selectedArticle.couleur && (
                         <p className="text-xs text-slate-500 mb-1">Couleur : {selectedArticle.couleur}</p>
                       )}
-                      <p className="text-lg sm:text-xl font-bold gold-gradient mb-1">
+                      <p className="text-lg sm:text-xl font-bold number-gold mb-1">
                         {parseFloat(selectedArticle.prix_vente).toLocaleString()} Ar
                       </p>
-                      <p className={`text-xs font-medium ${
-                        selectedArticle.quantite > 2 ? 'text-emerald-600' :
-                        selectedArticle.quantite === 0 ? 'text-red-500' : 'text-orange-500'
-                      }`}>
+                      <p className="text-xs font-medium number-gold">
                         Stock : {selectedArticle.quantite}
                       </p>
                     </div>
@@ -313,15 +307,15 @@ function VentePage() {
           {selectedArticle && (
             <div className="glass-card rounded-2xl p-4 sm:p-6">
               <h2 className="text-base sm:text-lg font-semibold text-slate-800 mb-4 sm:mb-6 flex items-center gap-3">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-100 flex items-center justify-center shrink-0">
-                  <Receipt className="text-emerald-600" size={18} />
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-100 flex items-center justify-center shrink-0">
+                  <Receipt className="text-blue-700" size={18} />
                 </div>
                 Récapitulatif
               </h2>
               <div className="space-y-2.5 text-sm sm:text-base">
                 <div className="flex justify-between text-slate-600">
                   <span>Prix unitaire</span>
-                  <span className="text-slate-800 font-semibold">{parseFloat(venteData.prixVente || 0).toLocaleString()} Ar</span>
+                  <span className="font-semibold number-gold">{parseFloat(venteData.prixVente || 0).toLocaleString()} Ar</span>
                 </div>
                 <div className="flex justify-between text-slate-600">
                   <span>Quantité</span>
@@ -329,16 +323,16 @@ function VentePage() {
                 </div>
                 <div className="flex justify-between text-slate-600">
                   <span>Sous-total</span>
-                  <span className="text-slate-800 font-semibold">{sousTotal.toLocaleString()} Ar</span>
+                  <span className="font-semibold number-gold">{sousTotal.toLocaleString()} Ar</span>
                 </div>
                 <div className="flex justify-between text-slate-600">
                   <span>Frais de livraison</span>
-                  <span className="text-slate-800 font-semibold">{parseFloat(venteData.fraisLivraison || 0).toLocaleString()} Ar</span>
+                  <span className="font-semibold number-gold">{parseFloat(venteData.fraisLivraison || 0).toLocaleString()} Ar</span>
                 </div>
                 <div className="h-px bg-slate-200 my-2"></div>
                 <div className="flex justify-between items-center">
                   <span className="text-base sm:text-lg font-bold text-slate-800">Total</span>
-                  <span className="text-lg sm:text-2xl font-bold gold-gradient">{totalVente.toLocaleString()} Ar</span>
+                  <span className="text-lg sm:text-2xl font-bold number-gold">{totalVente.toLocaleString()} Ar</span>
                 </div>
               </div>
             </div>
@@ -349,8 +343,8 @@ function VentePage() {
         <div className="lg:col-span-3 relative z-10">
           <div className="glass-card rounded-2xl p-4 sm:p-6">
             <h2 className="text-base sm:text-lg font-semibold text-slate-800 mb-4 sm:mb-6 flex items-center gap-3">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-purple-100 flex items-center justify-center shrink-0">
-                <User className="text-purple-600" size={18} />
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-red-100 flex items-center justify-center shrink-0">
+                <User className="text-red-600" size={18} />
               </div>
               Informations Client
             </h2>
@@ -407,7 +401,7 @@ function VentePage() {
               <div className="h-px bg-slate-200"></div>
 
               <h3 className="text-sm sm:text-base font-semibold text-slate-800 flex items-center gap-2">
-                <CreditCard size={18} className="text-amber-600 shrink-0" />
+                <CreditCard size={18} className="text-blue-700 shrink-0" />
                 Détails de la Transaction
               </h3>
 
@@ -478,7 +472,7 @@ function VentePage() {
 
               {venteData.paiement === 'mobile_money' && (
                 <div className="glass-card rounded-xl p-3 sm:p-5 bg-gradient-to-br from-green-50 to-transparent border border-green-200">
-                  <h4 className="text-xs sm:text-sm font-semibold text-emerald-600 mb-3">Informations Mobile Money</h4>
+                  <h4 className="text-xs sm:text-sm font-semibold text-blue-700 mb-3">Informations Mobile Money</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
                       <label className="block text-xs sm:text-sm text-slate-600 mb-1.5">N° Mobile Money</label>
@@ -508,7 +502,7 @@ function VentePage() {
               <div className="h-px bg-slate-200"></div>
 
               <h3 className="text-sm sm:text-base font-semibold text-slate-800 flex items-center gap-2">
-                <Truck size={18} className="text-purple-600 shrink-0" />
+                <Truck size={18} className="text-red-600 shrink-0" />
                 Informations Livreur
               </h3>
 

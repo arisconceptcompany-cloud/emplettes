@@ -106,14 +106,14 @@ function ArticleForm({ article = null }) {
       <div className="max-w-3xl mx-auto">
         <div className="glass-card rounded-2xl p-8">
           <div className="text-center mb-8">
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 mx-auto mb-4 flex items-center justify-center shadow-lg shadow-amber-500/30">
-              <Gem className="text-white" size={40} />
+            <div className="">
+              
             </div>
             <h1 className="text-3xl font-bold text-slate-800 mb-2">
               {article ? (
                 <><span className="logo-text">Modifier l'</span><span className="logo-text-emphase">Article</span></>
               ) : (
-                <><span className="logo-text">Nouvel </span><span className="logo-text-emphase">Article</span></>
+                <><span className="logo-text ">Nouvel </span><span className="logo-text-emphase">Article</span></>
               )}
             </h1>
             <p className="text-slate-500">
@@ -343,7 +343,7 @@ function ArticleForm({ article = null }) {
                   </>
                 ) : (
                   <>
-                    <Sparkles size={20} />
+                    
                     {article ? 'Mettre à jour' : 'Ajouter à la collection'}
                   </>
                 )}

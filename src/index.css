@@ -3,6 +3,12 @@
 @layer base {
   :root {
     color-scheme: light;
+    --brand-blue: #2563eb;
+    --brand-blue-dark: #1d4ed8;
+    --brand-red: #dc2626;
+    --brand-red-dark: #b91c1c;
+    --brand-cream: #d6b48a;
+    --brand-ink: #0f172a;
   }
 
   * {
@@ -12,9 +18,9 @@
   body {
     font-family: 'Inter', 'Pangolin', system-ui, -apple-system, sans-serif;
     background:
-      radial-gradient(circle at 12% 10%, rgba(14, 165, 233, 0.2), transparent 32%),
-      radial-gradient(circle at 85% 12%, rgba(99, 102, 241, 0.18), transparent 30%),
-      radial-gradient(circle at 50% 85%, rgba(244, 114, 182, 0.1), transparent 30%),
+      radial-gradient(circle at 12% 10%, rgba(37, 99, 235, 0.2), transparent 32%),
+      radial-gradient(circle at 85% 12%, rgba(220, 38, 38, 0.12), transparent 30%),
+      radial-gradient(circle at 50% 85%, rgba(214, 180, 138, 0.14), transparent 30%),
       linear-gradient(145deg, #f8fafc 0%, #eef2ff 46%, #f1f5f9 100%);
     min-height: 100vh;
     color: #0f172a;
@@ -41,40 +47,43 @@
   }
   
   .gold-gradient {
-    background: linear-gradient(135deg, #f59e0b 0%, #d97706 45%, #b45309 100%);
+    background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-red) 70%, var(--brand-red-dark) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   
   .gold-border {
-    border-image: linear-gradient(135deg, #b8860b, #daa520, #b8860b) 1;
+    border-image: linear-gradient(135deg, var(--brand-blue), var(--brand-red), var(--brand-cream)) 1;
   }
   
-  .btn-gold {
-    background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+ .btn-gold {
+    /* On remplace le gradient par ta variable bleue */
+    background: var(--brand-blue); 
     color: white;
     font-weight: 700;
     transition: all 0.25s ease;
-    box-shadow: 0 10px 24px rgba(234, 88, 12, 0.32);
+    /* On ajuste l'ombre pour qu'elle soit cohérente avec le bleu */
+    box-shadow: 0 10px 24px rgba(19, 199, 245, 0.25);
   }
   
   .btn-gold:hover {
-    background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
-    box-shadow: 0 12px 28px rgba(249, 115, 22, 0.38);
+    /* On utilise ta variable bleu foncé pour le survol */
+    background: var(--brand-blue-dark);
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.4);
     transform: translateY(-2px);
   }
   
   .btn-outline-gold {
-    border: 1px solid rgba(249, 115, 22, 0.45);
-    color: #c2410c;
+    border: 1px solid rgba(37, 99, 235, 0.35);
+    color: var(--brand-blue-dark);
     background: rgba(255, 255, 255, 0.7);
     transition: all 0.25s ease;
   }
   
   .btn-outline-gold:hover {
-    background: rgba(251, 146, 60, 0.12);
-    box-shadow: 0 8px 18px rgba(251, 146, 60, 0.2);
+    background: rgba(37, 99, 235, 0.08);
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.2);
   }
   
   .input-luxury {
@@ -86,8 +95,8 @@
   }
   
   .input-luxury:focus {
-    border-color: rgba(59, 130, 246, 0.75);
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.14);
+    border-color: rgba(37, 99, 235, 0.75);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.14);
     outline: none;
     background: white;
   }
@@ -106,8 +115,8 @@
   }
   
   .sidebar-item:hover, .sidebar-item.active {
-    background: rgba(59, 130, 246, 0.12);
-    border-left: 4px solid #3b82f6;
+    background: rgba(37, 99, 235, 0.12);
+    border-left: 4px solid var(--brand-blue);
   }
   
   .floating {
@@ -124,8 +133,8 @@
   }
   
   @keyframes pulseGold {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(184, 134, 11, 0.5); }
-    50% { box-shadow: 0 0 25px 12px rgba(184, 134, 11, 0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.35); }
+    50% { box-shadow: 0 0 25px 12px rgba(37, 99, 235, 0); }
   }
   
   .shimmer {
@@ -158,11 +167,11 @@
   .elegant-shadow {
     box-shadow: 
       0 10px 34px rgba(15, 23, 42, 0.12),
-      0 0 44px rgba(59, 130, 246, 0.08);
+      0 0 44px rgba(37, 99, 235, 0.12);
   }
 
   .text-shadow-gold {
-    text-shadow: 0 0 24px rgba(249, 115, 22, 0.26);
+    text-shadow: 0 0 24px rgba(220, 38, 38, 0.2);
   }
 
   .logo-text {
@@ -174,5 +183,15 @@
     font-family: 'Pangolin', cursive;
     color: #dc2626;
     letter-spacing: 0.02em;
+  }
+
+  .page-logo-title {
+    font-family: 'Pangolin', cursive;
+    letter-spacing: 0.01em;
+  }
+
+  .number-gold {
+    color: #d4af37;
+    text-shadow: 0 0 14px rgba(212, 175, 55, 0.25);
   }
 }
