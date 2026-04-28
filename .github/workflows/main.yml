@@ -45,8 +45,8 @@ jobs:
         uses: sebastianpopp/ftp-action@releases/v2
         with:
           host: ${{ secrets.SERVERS }}
-          user: ${{ secrets.NAMES }}
-          password: ${{ secrets.PASSS }}
+          user: ${{ secrets.FTP_NAMES }}
+          password: ${{ secrets.FTP_PASSS }}
           protocol: ftp
           port: 21
           localDir: ./dist/   # ✅ Mets "out" pour Next.js, "dist" pour Vite/CRA
