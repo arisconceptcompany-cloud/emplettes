@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://167.86.118.96:3008/api';
+const API_URL = 'https://empletteapi.aris-cc.com/api';
 
 const api = axios.create({
   baseURL: API_URL,
